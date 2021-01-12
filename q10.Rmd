@@ -1,12 +1,12 @@
 ```{r}
-stud = read.csv("q12.csv")
+stud = read.csv("q10.csv")
 stud = unlist(stud[2,2:3])
 stud
 barplot(stud, names.arg = c("FOC","CAD"), xlab = "X", ylab = "Y")
 ```
 
 ```{r}
-elect = read.csv("elect.csv")
+elect = read.csv("q10(2).csv")
 elect_name = elect$party
 elect_votes = elect$votes
 pie(elect_votes,elect_name)
@@ -14,7 +14,7 @@ pie(elect_votes,elect_name)
 
 ```{r}
 
-stud = read.csv("q12.csv")
+stud = read.csv("q10.csv")
 stud$avg = rowMeans(stud[2:3])
 female = stud[stud$Gender == "F",]
 male = stud[stud$Gender == "M",]
