@@ -1,0 +1,19 @@
+```{r}
+
+stud = read.csv("q1.csv")
+stud$stud.name = gsub("\\s+", " ", trimws(stud$stud.name))
+stud$stud.name = gsub("[^a-zA-Z| ]","", stud$stud.name)
+stud$stud.name = tolower(stud$stud.name)
+stud$cgpa = gsub("-|%","",stud$cgpa)
+stud$cgpa = as.numeric(stud$cgpa)
+stud$cgpa = replace(stud$cgpa, stud$cgpa>10.0 | stud$cgpa<0.0,NA)
+stud$cgpa = ifelse(is.na(stud$cgpa),mean(stud$cgpa,na.rm=TRUE),stud$cgpa)
+library(stringr)
+stud$stud.name = str_to_title(stud$stud.name)
+outliers = boxplot(stud$cgpa, plot=TRUE)$out
+stud = stud[-which(stud$cgpa %in% outliers),]
+stud
+
+```
+
+
